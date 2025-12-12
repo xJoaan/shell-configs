@@ -1,0 +1,100 @@
+# Starship configuration - Optimizado para fondo negro
+format = """
+[](#FF6B9D)\
+$os\
+$username\
+[](bg:#4ECDC4 fg:#FF6B9D)\
+$directory\
+[](fg:#4ECDC4 bg:#FFE66D)\
+$git_branch\
+$git_status\
+[](fg:#FFE66D bg:#95E1D3)\
+$kubernetes\
+[](fg:#95E1D3 bg:#FF9F1C)\
+$aws\
+[](fg:#FF9F1C bg:#00D9FF)\
+$docker_context\
+[](fg:#00D9FF bg:#6C5CE7)\
+$time\
+[ ](fg:#6C5CE7)\
+$line_break$character"""
+
+# Disable the blank line at the start of the prompt
+add_newline = true
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = true
+style_user = "bg:#FF6B9D fg:black bold"
+style_root = "bg:#FF6B9D fg:black bold"
+format = '[$user ]($style)'
+disabled = false
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "bg:#FF6B9D fg:black"
+disabled = true # Disabled by default
+
+[directory]
+style = "bg:#4ECDC4 fg:black bold"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " 󰈙 "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important 󰈙 " = " 󰈙 "
+
+[git_branch]
+symbol = "  "
+style = "bg:#FFE66D fg:black bold"
+format = '[$symbol$branch ]($style)'
+
+[git_status]
+style = "bg:#FFE66D fg:black bold"
+format = '[$all_status$ahead_behind ]($style)'
+
+[kubernetes]
+symbol = "⎈ "
+format = '[$symbol$context\($namespace\) ]($style)'
+style = "bg:#95E1D3 fg:black bold"
+disabled = false
+
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+
+[aws]
+symbol = "☁️  "
+style = "bg:#FF9F1C fg:black bold"
+format = '[$symbol($region) ]($style)'
+disabled = false
+
+[docker_context]
+symbol = "🐳 "
+style = "bg:#00D9FF fg:black bold"
+format = '[$symbol$context ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#6C5CE7 fg:white bold"
+format = '[ ♥ $time ]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[➜](bold green)'
+error_symbol = '[➜](bold red)'
