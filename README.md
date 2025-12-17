@@ -27,7 +27,7 @@ El prompt muestra:
 ## 📦 Instalación Rápida
 
 ```bash
-git clone https://github.com/TU_USUARIO/dotfiles.git
+git clone https://github.com/xJoaan/shell-configs.git
 cd dotfiles
 chmod +x install.sh
 ./install.sh
